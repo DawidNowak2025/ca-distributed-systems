@@ -1,0 +1,21 @@
+{
+  "name": "smart-clean-energy-node",
+  "version": "1.0.0",
+  "description": "Distributed Systems CA mock project in Node.js using gRPC",
+  "main": "index.js",
+  "scripts": {
+    "start:registry": "node registry/registryServer.js",
+    "start:solar": "node solar/solarServer.js",
+    "start:battery": "node battery/batteryServer.js",
+    "start:energy": "node energy/energyServer.js",
+    "start:client": "node client/app.js",
+    "start:all": "concurrently \"npm run start:registry\" \"npm run start:solar\" \"npm run start:battery\" \"npm run start:energy\" \"npm run start:client\""
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.11.3",
+    "@grpc/proto-loader": "^0.7.13",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  }
+}
