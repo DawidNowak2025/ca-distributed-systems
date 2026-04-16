@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package registry;
+
+// This code is used to define service registration details.
+message ServiceInfo {
+  string name = 1;
+  string host = 2;
+  int32 port = 3;
+  string description = 4;
+  string status = 5;
+}
+
+// This code is used to define a common response after registration.
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// This code is used to define an empty request.
+message Empty {
+}
+
+// This code is used to define the registry naming service.
+service RegistryService {
+  rpc RegisterService(ServiceInfo) returns (RegisterResponse);
+  rpc DiscoverServices(Empty) returns (stream ServiceInfo);
+}
