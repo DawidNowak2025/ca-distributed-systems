@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package solar;
+
+// This code is used to send one solar calculation request.
+message SolarRequest {
+  double sunlightLevel = 1;
+  double panelArea = 2;
+  double efficiency = 3;
+}
+
+// This code is used to return one solar calculation response.
+message SolarResponse {
+  double currentOutput = 1;
+  string status = 2;
+}
+
+// This code is used to request a stream of solar readings.
+message SolarStreamRequest {
+  int32 numberOfReadings = 1;
+  double baseSunlight = 2;
+  double panelArea = 3;
+  double efficiency = 4;
+}
+
+// This code is used to return one solar reading item.
+message SolarReading {
+  string timestamp = 1;
+  double output = 2;
+  string status = 3;
+}
+
+// This code is used to define the solar service.
+service SolarService {
+  rpc GetSolarOutput(SolarRequest) returns (SolarResponse);
+  rpc StreamSolarReadings(SolarStreamRequest) returns (stream SolarReading);
+}
