@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package battery;
+
+// This code is used to request the current battery status.
+message BatteryStatusRequest {
+  double capacity = 1;
+  double currentCharge = 2;
+}
+
+// This code is used to return the current battery status.
+message BatteryStatusResponse {
+  double batteryPercentage = 1;
+  string batteryState = 2;
+  string status = 3;
+}
+
+// This code is used to send one battery event from the client stream.
+message BatteryEvent {
+  string eventType = 1;
+  double amount = 2;
+}
+
+// This code is used to return a summary after client streaming.
+message BatterySummary {
+  int32 chargeEvents = 1;
+  int32 dischargeEvents = 2;
+  double finalLevel = 3;
+  string status = 4;
+}
+
+// This code is used to define the battery service.
+service BatteryService {
+  rpc GetBatteryStatus(BatteryStatusRequest) returns (BatteryStatusResponse);
+  rpc UploadBatteryEvents(stream BatteryEvent) returns (BatterySummary);
+}

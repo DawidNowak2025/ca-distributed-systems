@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package energy;
+
+// This code is used to request one energy balance calculation.
+message EnergyBalanceRequest {
+  double production = 1;
+  double consumption = 2;
+  double batteryLevel = 3;
+}
+
+// This code is used to return one energy balance result.
+message EnergyBalanceResponse {
+  double balance = 1;
+  string recommendation = 2;
+  string status = 3;
+}
+
+// This code is used to send one live energy flow message.
+message EnergyFlowMessage {
+  double production = 1;
+  double consumption = 2;
+  double batteryLevel = 3;
+}
+
+// This code is used to return one decision in bidirectional streaming.
+message EnergyDecision {
+  string action = 1;
+  string reason = 2;
+}
+
+// This code is used to define the energy management service.
+service EnergyService {
+  rpc CalculateEnergyBalance(EnergyBalanceRequest) returns (EnergyBalanceResponse);
+  rpc ManageEnergyFlow(stream EnergyFlowMessage) returns (stream EnergyDecision);
+}
