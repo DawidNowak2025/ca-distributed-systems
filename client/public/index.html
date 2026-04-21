@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Clean Energy Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-header">
+    <div class="header-left">
+      <img src="nci-logo.png" alt="NCI Logo" class="nci-logo" />
+      <div class="title-group">
+        <h1>Smart Clean Energy Management System</h1>
+        <p>Node.js + gRPC + Service Discovery</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="card card-wide">
+      <h2>Discovered Services</h2>
+      <p class="section-text">Use the registry service to list all available backend services and their ports.</p>
+      <button id="discoverBtn">Discover Services</button>
+      <pre id="servicesOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Solar Unary RPC</h2>
+      <p class="section-text">Enter solar panel values to calculate the current output.</p>
+
+      <div class="input-grid">
+        <div class="field-group">
+          <label for="sunlightLevel">Sunlight Level</label>
+          <small>Example sunlight input value</small>
+          <input id="sunlightLevel" type="number" step="0.1" value="4" />
+        </div>
+
+        <div class="field-group">
+          <label for="panelArea">Panel Area (m²)</label>
+          <small>Total panel size in square metres</small>
+          <input id="panelArea" type="number" step="0.1" value="10" />
+        </div>
+
+        <div class="field-group">
+          <label for="solarEfficiency">Efficiency (0.0 - 1.0)</label>
+          <small>Panel conversion efficiency</small>
+          <input id="solarEfficiency" type="number" step="0.01" value="0.2" />
+        </div>
+      </div>
+
+      <button id="solarUnaryBtn">Get Solar Output</button>
+      <pre id="solarUnaryOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Solar Server Streaming RPC</h2>
+      <p class="section-text">Stream multiple solar readings over time from one request.</p>
+
+      <div class="input-grid">
+        <div class="field-group">
+          <label for="streamCount">Number of Readings</label>
+          <small>How many readings should be returned</small>
+          <input id="streamCount" type="number" value="5" />
+        </div>
+
+        <div class="field-group">
+          <label for="streamSunlight">Base Sunlight Level</label>
+          <small>Starting sunlight value for the stream</small>
+          <input id="streamSunlight" type="number" step="0.1" value="3" />
+        </div>
+
+        <div class="field-group">
+          <label for="streamArea">Panel Area (m²)</label>
+          <small>Total panel size used in calculation</small>
+          <input id="streamArea" type="number" step="0.1" value="10" />
+        </div>
+
+        <div class="field-group">
+          <label for="streamEfficiency">Efficiency (0.0 - 1.0)</label>
+          <small>Panel conversion efficiency</small>
+          <input id="streamEfficiency" type="number" step="0.01" value="0.2" />
+        </div>
+      </div>
+
+      <button id="solarStreamBtn">Stream Solar Readings</button>
+      <pre id="solarStreamOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Battery Unary RPC</h2>
+      <p class="section-text">Check the current battery percentage and battery state.</p>
+
+      <div class="input-grid">
+        <div class="field-group">
+          <label for="batteryCapacity">Battery Capacity (kWh)</label>
+          <small>Maximum storage capacity</small>
+          <input id="batteryCapacity" type="number" step="0.1" value="100" />
+        </div>
+
+        <div class="field-group">
+          <label for="batteryCharge">Current Charge (kWh)</label>
+          <small>Current stored battery energy</small>
+          <input id="batteryCharge" type="number" step="0.1" value="65" />
+        </div>
+      </div>
+
+      <button id="batteryStatusBtn">Get Battery Status</button>
+      <pre id="batteryStatusOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Battery Client Streaming RPC</h2>
+      <p class="section-text">Send multiple battery events and receive one summary response.</p>
+      <button id="batteryEventsBtn">Upload Battery Events</button>
+      <pre id="batteryEventsOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Energy Unary RPC</h2>
+      <p class="section-text">Compare production and consumption to calculate energy balance.</p>
+
+      <div class="input-grid">
+        <div class="field-group">
+          <label for="energyProduction">Energy Production (kWh)</label>
+          <small>Total produced energy</small>
+          <input id="energyProduction" type="number" step="0.1" value="8" />
+        </div>
+
+        <div class="field-group">
+          <label for="energyConsumption">Energy Consumption (kWh)</label>
+          <small>Total used energy</small>
+          <input id="energyConsumption" type="number" step="0.1" value="5" />
+        </div>
+
+        <div class="field-group">
+          <label for="energyBatteryLevel">Battery Level (%)</label>
+          <small>Current battery percentage</small>
+          <input id="energyBatteryLevel" type="number" step="0.1" value="60" />
+        </div>
+      </div>
+
+      <button id="energyBalanceBtn">Calculate Energy Balance</button>
+      <pre id="energyBalanceOutput">No data yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Energy Bidirectional Streaming RPC</h2>
+      <p class="section-text">Send live energy values and receive live decisions from the service.</p>
+      <button id="energyFlowBtn">Manage Energy Flow</button>
+      <pre id="energyFlowOutput">No data yet.</pre>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
