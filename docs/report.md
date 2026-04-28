@@ -6,20 +6,20 @@ It simulates a smart environment where energy is produced, stored and managed us
 
 ## Technologies used
 
-- Node.js
-- gRPC
-- Protocol Buffers
-- Express
-- HTML, CSS and JavaScript
+* Node.js
+* gRPC
+* Protocol Buffers
+* Express
+* HTML, CSS and JavaScript
 
 ## Services
 
 The system contains four main services:
 
-- SolarService – calculates solar energy and provides streaming data
-- BatteryService – handles energy storage and battery status
-- EnergyService – makes decisions based on energy production and consumption
-- RegistryService – works as a naming service for service discovery
+* SolarService – calculates solar energy and provides streaming data
+* BatteryService – handles energy storage and battery status
+* EnergyService – makes decisions based on energy production and consumption
+* RegistryService – works as a naming service for service discovery
 
 ## How the system works
 
@@ -38,18 +38,18 @@ The flow is:
 
 This project demonstrates different gRPC communication types:
 
-- Unary RPC
-- Server Streaming RPC
-- Client Streaming RPC
-- Bidirectional Streaming RPC
+* Unary RPC
+* Server Streaming RPC
+* Client Streaming RPC
+* Bidirectional Streaming RPC
 
 ## Ports
 
-- RegistryService: 50050
-- SolarService: 50051
-- BatteryService: 50052
-- EnergyService: 50053
-- GUI / Express client: 3000
+* RegistryService: 50050
+* SolarService: 50051
+* BatteryService: 50052
+* EnergyService: 50053
+* GUI / Express client: 3000
 
 ## Install dependencies
 
@@ -83,4 +83,5 @@ ca-distributed-systems/
 ├── package.json
 └── README.md
 Notes
-This is a student project and simulation only. It is not connected to real solar panels or real battery hardware.
+This is a student project and simulation only. It is not connected to real solar panels or real battery hardware. its doc to be updated when project progressing 
+
